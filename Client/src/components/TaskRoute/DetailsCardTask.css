@@ -1,0 +1,58 @@
+.card_menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .circle_Details {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .username {
+    font-size: 14px;
+  }
+  
+  .username h5 {
+    margin: 0;
+  }
+  
+ 
+  .options-menu {
+    position: absolute;
+    top: 20%;
+    right: 25px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 10px;
+    z-index: 1000; 
+  }
+  
+ 
+  .options-menu .div_item {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+    cursor: pointer;
+  }
+  
+  .options-menu .div_item:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .options-menu svg {
+    margin-right: 10px;
+  }
+  
+  .options-menu span {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  
+  .details-card-container {
+    position: relative;
+  }
