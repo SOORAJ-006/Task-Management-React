@@ -1,0 +1,28 @@
+.aside_icon{
+    width: 35px;
+    height: 35px;
+}
+
+h3{
+    padding-bottom: 0px !important;
+}
+
+.list{
+    height: 40px;
+}
+
+.list:hover{
+    background: rgb(120, 118, 118);
+}
+
+.aside_main{
+    width: 25%;
+    height: 100vh;
+    background-color: white;
+}
+
+.link_to{
+    text-decoration: none; /* Remove underline */
+  color: inherit;
+
+}

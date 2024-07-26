@@ -1,0 +1,16 @@
+.card{
+    border: none;
+}
+
+.card_main{
+    width: 450px;
+}
+
+.input_div , .top_close , .div_btn{
+    width: 100%;
+}
+
+form{
+    width: 100%;
+}
+

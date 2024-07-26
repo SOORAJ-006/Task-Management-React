@@ -1,0 +1,43 @@
+.circle{
+    width: 15px;
+    height: 15px;
+}
+
+.top_card{
+    border: none;
+}
+
+.circle_Details{
+    width: 20px;
+    height: 20px;
+}
+
+
+.top_card {
+    position: relative;
+    z-index: 1;
+  }
+  
+  .form-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    z-index: 11;
+  }
+  
+  body.blur-background {
+    filter: blur(5px);
+  }

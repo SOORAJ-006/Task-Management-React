@@ -1,0 +1,21 @@
+.section_main{
+    /* background-color: rgb(247, 246, 246) !important; */
+}
+
+.main_body{
+    width: 100%;
+}
+
+.task_title_list{
+    width: 60%;
+}
+
+.employee_list{
+    width: 30%;
+    max-height: 240px;
+}
+
+Link{
+    list-style: none;
+    color: black;
+}

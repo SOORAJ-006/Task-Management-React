@@ -1,0 +1,17 @@
+.user_icon{
+    width: 30px;
+    height: 30px;
+}
+
+.search_bar{
+    width: 20%;
+}
+
+.custom-bg-color {
+    background-color: #e8eaec;
+}
+
+.header_main{
+    max-width: 100%;
+    background-color: white;
+}
