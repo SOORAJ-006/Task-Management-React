@@ -36,7 +36,7 @@ const TopCardTask = ({name}) => {
         <div className="form-overlay">
           <div className="form-container">
            
-            <AddTask handleClose={handleClose} status={name}/>
+            <AddTask handleClose={handleClose} status={name} task={''} />
           </div>
         </div>
       )}

@@ -20,7 +20,7 @@ const DetailsCardTask = ({task}) => {
 
   return (
     <>
-        <div className="details-card-container">
+        <div key={task._id} className="details-card-container">
       <Card className='mb-3 card_menu'>
         <div className='d-flex flex-column p-3'>
 
@@ -52,15 +52,15 @@ const DetailsCardTask = ({task}) => {
 
           <hr />
           <div className='d-flex justify-content-between align-items-center username'>
-            <span>{user.name}</span>
-            <div className='circle_Details bg-primary rounded-5 text-white d-flex justify-content-center align-items-center'>{user.name[0]}</div>
+            <span>{}</span>
+            <div className='circle_Details bg-primary rounded-5 text-white d-flex justify-content-center align-items-center'>{}</div>
           </div>
           <hr />
 
           {showMenu && (
             <div className="options-menu">
               
-              <MenuCard /> 
+              <MenuCard user={user} task={task} /> 
             </div>
           )}
 
