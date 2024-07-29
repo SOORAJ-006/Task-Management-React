@@ -1,23 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useSelector , useDispatch } from "react-redux";
 import { Button, Card } from "react-bootstrap";
-import {addTask} from '../../../redux/taskSlice'
+import {addTask , editTask} from '../../../redux/taskSlice'
 import "./AddTask.css";
 
-const AddTask = ({ handleClose, status , close }) => {
+const AddTask = ({ handleClose, status , close , formTitle , userId , task}) => {
+  
+  const taskPriority = task.priority ? task.priority : 'normal'
   const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch()
-
+  console.log('usr id : ' , userId);
   const [taskStage, setTaskStage] = useState(status);
+
+ 
   const [formData, setFormData] = useState({
-    title: "",
-    priority: "normal",
-    stage: status,
-    userId: "",
+    title: task.title || "",
+    priority: task.priority || "normal",
+    stage: task.stage || status,
+    userId: task.userId || "",
   });
 
   useEffect(() => {
-    setTaskStage(status);
+    setTaskStage(task.stage ? task.stage : status);
     console.log("formData : " , formData);
   }, [status , formData]);
 
@@ -26,20 +30,46 @@ const AddTask = ({ handleClose, status , close }) => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-        
-        const response = await fetch('http://localhost:3001/tasks' , {
+
+
+        if(task){
+
+          const response = await fetch(`http://localhost:3001/tasks/${task._id} `, {
+            method:'PUT',
+            headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+        })
+          if(!response){
+            alert('response Error')
+        }
+        const responseData = await response.json()
+        console.log("responseData : " , responseData)
+        dispatch(editTask(responseData))
+
+        }
+        else{
+
+          const response = await fetch('http://localhost:3001/tasks' , {
             method:'POST',
             headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(formData),
         })
-        if(!response){
+          if(!response){
             alert('response Error')
         }
         const responseData = await response.json()
         console.log("responseData : " , responseData)
-        dispatch(addTask(formData));
+        dispatch(addTask(responseData));
+
+        }
+
+
+        
+       
         handleClose()
 
     } catch (error) {
@@ -99,7 +129,7 @@ const handleTaskStageChange = (e) => {
       <Card className="card card_main">
         <div className="d-flex flex-column justify-content-start align-items-center">
           <div className="d-flex justify-content-between align-items-center top_close mb-3">
-            <h5 className="fs-3">Add Task</h5>
+            <h5 className="fs-3">{formTitle ? formTitle : 'Add Task'}</h5>
             <svg
               onClick={handleClose}
               xmlns="http://www.w3.org/2000/svg"
@@ -123,17 +153,18 @@ const handleTaskStageChange = (e) => {
                 placeholder="Task Title"
                 aria-label="Username"
                 aria-describedby="addon-wrapping"
+                value={formData.title}
               ></input>
             </div>
 
             <div className="input_div mb-3">
               <span className="mb-2 fs-5">Assign Task To:</span>
               <select onChange={handleUserChange} class="form-select" aria-label="Default select example" >
-                <option selected> please select</option>
+                <option selected value={userId ? userId._id : ""}>{task ? `${userId.name} , ${userId.role}` : 'Please Select'}</option>
                 {users.map((user) => (
-                  <option value={user._id}>
-                    {user.name} , {user.role}
-                  </option>
+                  <option key={user._id} value={user._id}>
+                  {user.name}, {user.role}
+                </option>
                 ))}
               </select>
             </div>
@@ -144,7 +175,7 @@ const handleTaskStageChange = (e) => {
                 <select
                    
                   class="form-select"
-                  value={taskStage}
+                  value={formData.stage}
                   onChange={handleTaskStageChange}
                   aria-label="Default select example"
                 >
@@ -158,6 +189,7 @@ const handleTaskStageChange = (e) => {
                 <span className="mb-2 fs-5">Priority</span>
                 <select
                 onChange={handlePriorityChange}
+                value={formData.priority}
                 class="form-select" aria-label="Default select example">
                   <option selected value="normal">
                     Normal
