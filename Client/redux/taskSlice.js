@@ -17,6 +17,12 @@ const taskSlice = createSlice({
       if (index !== -1) {
         state.tasks[index] = action.payload;
       }
+    },
+    deleteTask: (state, action)=>{
+      const index = state.tasks.findIndex(task => task._id === action.payload._id);
+      if (index !== -1) {
+        state.tasks.splice(index, 1);
+      }
     }
   },
   extraReducers: (builder) => {
@@ -34,5 +40,5 @@ const taskSlice = createSlice({
   },
 });
 
-export const { addTask , editTask } = taskSlice.actions;
+export const { addTask , editTask , deleteTask } = taskSlice.actions;
 export default taskSlice.reducer;

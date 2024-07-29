@@ -24,9 +24,9 @@ const EmployeeDetails = () => {
           {users.map((user) => (
             <tr key={user._id}>
               <td className="d-flex align-items-center gap-2">
-                {" "}
+                {}
                 <div className="Employee_Details_Icon text-white bg-primary rounded-5 d-flex justify-content-center align-items-center">
-                  {user.name[0]}
+                  {}
                 </div>
                 {user.name}
               </td>

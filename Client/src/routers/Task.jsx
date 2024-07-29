@@ -6,6 +6,7 @@ import TopCardTask from "../components/TaskRoute/TopCardTask";
 import DetailsCardTask from "../components/TaskRoute/DetailsCardTask";
 import { fetchTasks } from "../../redux/taskSlice";
 import MenuCard from "../components/Card/MenuCard";
+import DeleteTask from "../components/Forms/DeleteTask";
 
 const Task = () => {
   const tasks = useSelector((state) => state.tasks.tasks)
@@ -61,7 +62,6 @@ const Task = () => {
 
       </div>
 
-      
     </>
   );
 };

@@ -52,8 +52,8 @@ const DetailsCardTask = ({task}) => {
 
           <hr />
           <div className='d-flex justify-content-between align-items-center username'>
-            <span>{}</span>
-            <div className='circle_Details bg-primary rounded-5 text-white d-flex justify-content-center align-items-center'>{}</div>
+            <span>{user.name}</span>
+            <div className='circle_Details bg-primary rounded-5 text-white d-flex justify-content-center align-items-center'>{user.name[0]}</div>
           </div>
           <hr />
 
